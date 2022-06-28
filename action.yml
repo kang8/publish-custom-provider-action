@@ -11,3 +11,27 @@ outputs:
 runs:
   using: 'node16'
   main: 'dist/index.js'
+
+#this action requires the completion of the initial (currently manual) steps
+# (1) creating a provider in tf cloud instance
+# (2) adding a gpg key to tf cloud instance
+# find information how to complete these first in the readme
+name: 'Upload Provider'
+description: 'Uploads custom terraform provider to private registry in tf cloud'
+inputs:
+#required inputs for creating a new version of the provider
+  key_id:
+    description: 'id of gpg key used for tf cloud provider'
+    required: true
+  version:
+    description: 'semantically numbered version of the provider'
+    requried: true
+  binary_location:
+    description: 'Filepath location where the artifacts to be uploaded are stored in the runner'
+    required: true
+outputs:
+  successful_uploads:
+    description: 'list of binaries/platforms that were successfully uploaded to specified registry'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
