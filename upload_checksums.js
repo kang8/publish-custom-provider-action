@@ -1,7 +1,7 @@
 const { fetch, FormData } = require("node-fetch");
 var fs = require("fs");
 
-let UploadChecksums = function (binaryLocation, shaSumsLinks) {
+let UploadChecksums = function(binaryLocation, shaSumsLinks) {
   //grab all files with SHA256SUMS in the name (should be limited to only 2 files produced by goreleaser), not sure if there is a better way to filter these
   GetFiles(binaryLocation, "SHA256SUMS", (allFiles) => {
     //loop over list of files found:
@@ -24,7 +24,7 @@ let UploadChecksums = function (binaryLocation, shaSumsLinks) {
   });
 
   //this is duplicate code, but with an extra parameter from the upload binaries script. Should extract at some point and put into one reusable helper method.
-  let GetFiles = async function (binaryLocation, lookup, callback) {
+  let GetFiles = async function(binaryLocation, lookup, callback) {
     var fileList = [];
     fs.readdir(binaryLocation, (err, files) => {
       files.forEach((file) => {
@@ -36,7 +36,7 @@ let UploadChecksums = function (binaryLocation, shaSumsLinks) {
     });
   };
 
-  let UploadFile = async function (file, url) {
+  let UploadFile = async function(file, url) {
     let formData = new FormData();
     formData.append(file);
 

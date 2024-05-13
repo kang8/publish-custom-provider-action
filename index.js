@@ -19,13 +19,13 @@ async function runUpload() {
 
     // upload checksums using links from provider version response
 
-    let shaSumsLinks = {shaSum: checksumResponse['data']['links']['shasum-upload'], shaSumSig: checksumResponse['data']['links']['shasums-sig-upload']};
+    let shaSumsLinks = { shaSum: checksumResponse['data']['links']['shasum-upload'], shaSumSig: checksumResponse['data']['links']['shasums-sig-upload'] };
     await UploadChecksums(binaryLocation, shaSumsLinks);
-    
+
     //create all providers for the version created above, as per the artifacts in the provided directory
 
     await UploadBinaries(orgName, providerName, version, binaryLocation);
-    
+
   } catch (error) {
     core.setFailed(error.message);
   }

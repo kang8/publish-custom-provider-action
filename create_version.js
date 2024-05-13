@@ -1,8 +1,8 @@
 const fetch = require("node-fetch");
 const Headers = require("node-fetch");
 
-let CreateVersion = async function (orgName, providerName, version, keyID) {
-  
+let CreateVersion = async function(orgName, providerName, version, keyID) {
+
   let versionURL = `https://app.terraform.io/api/v2/organizations/${orgName}/registry-providers/private/${orgName}/${providerName}/versions`;
 
   var myHeaders = new Headers();
@@ -30,7 +30,7 @@ let CreateVersion = async function (orgName, providerName, version, keyID) {
     redirect: "follow",
   };
 
-  return new Promise (fetch(versionURL, requestOptions)
+  return new Promise(fetch(versionURL, requestOptions)
     .then((response) => response.json())
     .then((result) => console.log(result))
     .catch((error) => console.log("error", error)));
