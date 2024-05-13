@@ -27,4 +27,4 @@ outputs:
     description: 'list of binaries/platforms that were successfully uploaded to specified registry'
 runs:
   using: 'node16'
-  main: 'dist/index.js'
+  main: 'index.js'
