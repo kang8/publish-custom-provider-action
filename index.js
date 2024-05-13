@@ -10,8 +10,8 @@ async function runUpload() {
     const version = core.getInput("version");
     const binaryLocation = core.getInput("binary_location");
 
-    const orgName = "gd-test";
-    const providerName = "gd-stripe-provider";
+    const orgName = core.getInput("org_name");
+    const providerName = core.getInput("provider_name");
 
     // create a provider version  on registry
 
